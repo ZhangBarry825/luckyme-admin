@@ -61,12 +61,13 @@ export default {
     theme: '换肤',
     clipboardDemo: 'Clipboard',
     i18n: '国际化',
-    externalLink: '外链'
+    externalLink: '外链',
+    userInfo:'用户信息'
   },
   navbar: {
     logOut: '退出登录',
     dashboard: '首页',
-    github: '项目地址',
+    updateinfo: '修改信息',
     screenfull: '全屏',
     theme: '换肤',
     size: '布局大小'
@@ -77,6 +78,8 @@ export default {
     username: '账号',
     password: '密码',
     any: '随便填',
+    inputAccount:'请输入正确的账号',
+    inputPassword:'请输入正确的密码',
     thirdparty: '第三方登录',
     thirdpartyTips: '本地不能模拟，请结合自己业务进行模拟！！！'
   },
@@ -151,5 +154,18 @@ export default {
     close: '关闭',
     closeOthers: '关闭其它',
     closeAll: '关闭所有'
+  },
+  userinfo:{
+    name:'昵称',
+    roles:'身份',
+    avatar:'头像',
+    description:'描述',
+    address:'地址',
+    email:'邮箱',
+    createTime:'创建时间',
+    submit:'修改',
+    admin:'管理员',
+    selectDate:'请选择日期',
+    selectRole:'请选择身份',
   }
 }

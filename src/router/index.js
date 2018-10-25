@@ -100,7 +100,21 @@ export const constantRouterMap = [
         meta: { title: 'guide', icon: 'guide', noCache: true }
       }
     ]
-  }
+  },
+  {
+    path: '/userinfo',
+    component: Layout,
+    redirect: '/userinfo/index',
+    hidden:true,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/userinfo/index'),
+        name: 'UserInfo',
+        meta: { title: 'userInfo', icon: 'guide', noCache: true }
+      }
+    ]
+  },
 ]
 
 export default new Router({

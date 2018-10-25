@@ -61,12 +61,13 @@ export default {
     theme: 'Theme',
     clipboardDemo: 'Clipboard',
     i18n: 'I18n',
-    externalLink: 'External Link'
+    externalLink: 'External Link',
+    userInfo:'User Info'
   },
   navbar: {
     logOut: 'Log Out',
     dashboard: 'Dashboard',
-    github: 'Github',
+    updateinfo: 'UpdateInfo',
     screenfull: 'Screenfull',
     theme: 'Theme',
     size: 'Global Size'
@@ -77,6 +78,8 @@ export default {
     username: 'Username',
     password: 'Password',
     any: 'any',
+    inputAccount:'Please enter the correct account',
+    inputPassword:'Please enter the correct password',
     thirdparty: 'Or connect with',
     thirdpartyTips: 'Can not be simulated on local, so please combine you own business simulation! ! !'
   },
@@ -151,5 +154,18 @@ export default {
     close: 'Close',
     closeOthers: 'Close Others',
     closeAll: 'Close All'
+  },
+  userinfo:{
+    name:'Nick Name',
+    roles:'Role',
+    avatar:'Avatar',
+    description:'Description',
+    address:'Address',
+    email:'Email',
+    createTime:'Add Time',
+    submit:'Update',
+    admin:'admin',
+    selectDate:'please select date',
+    selectRole:'please select role',
   }
 }
