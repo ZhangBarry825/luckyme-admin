@@ -62,12 +62,14 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: '国际化',
     externalLink: '外链',
-    userInfo:'用户信息'
+    userInfo:'用户信息',
+    password:'用户密码',
   },
   navbar: {
     logOut: '退出登录',
     dashboard: '首页',
     updateinfo: '修改信息',
+    updatepassword: '修改密码',
     screenfull: '全屏',
     theme: '换肤',
     size: '布局大小'
@@ -163,9 +165,23 @@ export default {
     address:'地址',
     email:'邮箱',
     createTime:'创建时间',
-    submit:'修改',
+    submit:'确定',
     admin:'管理员',
     selectDate:'请选择日期',
     selectRole:'请选择身份',
+    success:'修改成功'
+  },
+  password:{
+    oldPassword:'旧密码',
+    newPassword:'新密码',
+    repeatPassword:'确认密码',
+    submit:'确定',
+    reset:'重置',
+    msg1:'旧密码不能为空',
+    msg2:'旧密码不能少于6位',
+    msg3:'请输入密码',
+    msg4:'请再次输入密码',
+    msg5:'两次输入密码不一致!',
+    success:'修改成功'
   }
 }

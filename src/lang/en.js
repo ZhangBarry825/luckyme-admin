@@ -62,12 +62,14 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: 'I18n',
     externalLink: 'External Link',
-    userInfo:'User Info'
+    userInfo:'User Info',
+    password:'User Password',
   },
   navbar: {
     logOut: 'Log Out',
     dashboard: 'Dashboard',
-    updateinfo: 'UpdateInfo',
+    updateinfo: 'Update Info',
+    updatepassword: 'Update Password',
     screenfull: 'Screenfull',
     theme: 'Theme',
     size: 'Global Size'
@@ -163,9 +165,23 @@ export default {
     address:'Address',
     email:'Email',
     createTime:'Add Time',
-    submit:'Update',
+    submit:'Submit',
     admin:'admin',
     selectDate:'please select date',
     selectRole:'please select role',
+    success:'Update successfully'
+  },
+  password:{
+    oldPassword:'Old Password',
+    newPassword:'New Password',
+    repeatPassword:'Repeat Password',
+    submit:'Submit',
+    reset:'Reset',
+    msg1:'Old password can not be empty',
+    msg2:'The old password is not less than 6 letters',
+    msg3:'Please input password',
+    msg4:'Please input the password again',
+    msg5:'The two input password is inconsistent!',
+    success:'Update successfully'
   }
 }

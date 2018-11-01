@@ -21,3 +21,11 @@ export function uploadAvatar(data){
     data
   })
 }
+
+export function updatePassword(data){
+  return request({
+    url: '/api/admin/user/updatepwd',
+    method: 'post',
+    data
+  })
+}

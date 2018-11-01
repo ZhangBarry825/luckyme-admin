@@ -52,12 +52,12 @@
           create_time: '',
           description: '',
         },
-        file: ''
+        file: '',
+        success:this.$t('userinfo.success')
       }
     },
     methods: {
       onSubmit() {
-        console.log(this.form);
         var data={
           name:this.form.name,
           roles:this.form.roles,
@@ -69,7 +69,7 @@
         }
         updateUserInfo(data).then(response=>{
           Message({
-            message: response.msg,
+            message: this.success,
             type: 'success',
             duration: 2000
           })
@@ -100,7 +100,6 @@
     },
     mounted(){
       getUserInfo().then(response=>{
-        console.log(response.data)
         this.form=response.data
       })
     }

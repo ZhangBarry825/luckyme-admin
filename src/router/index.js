@@ -115,6 +115,20 @@ export const constantRouterMap = [
       }
     ]
   },
+  {
+    path: '/password',
+    component: Layout,
+    redirect: '/password/index',
+    hidden:true,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/password/index'),
+        name: 'Password',
+        meta: { title: 'password', icon: 'guide', noCache: true }
+      }
+    ]
+  },
 ]
 
 export default new Router({
