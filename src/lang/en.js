@@ -62,8 +62,8 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: 'I18n',
     externalLink: 'External Link',
-    userInfo:'User Info',
-    password:'User Password',
+    userInfo: 'User Info',
+    password: 'User Password'
   },
   navbar: {
     logOut: 'Log Out',
@@ -80,8 +80,8 @@ export default {
     username: 'Username',
     password: 'Password',
     any: 'any',
-    inputAccount:'Please enter the correct account',
-    inputPassword:'Please enter the correct password',
+    inputAccount: 'Please enter the correct account',
+    inputPassword: 'Please enter the correct password',
     thirdparty: 'Or connect with',
     thirdpartyTips: 'Can not be simulated on local, so please combine you own business simulation! ! !'
   },
@@ -157,31 +157,32 @@ export default {
     closeOthers: 'Close Others',
     closeAll: 'Close All'
   },
-  userinfo:{
-    name:'Nick Name',
-    roles:'Role',
-    avatar:'Avatar',
-    description:'Description',
-    address:'Address',
-    email:'Email',
-    createTime:'Add Time',
-    submit:'Submit',
-    admin:'admin',
-    selectDate:'please select date',
-    selectRole:'please select role',
-    success:'Update successfully'
+  userinfo: {
+    name: 'Nick Name',
+    roles: 'Role',
+    avatar: 'Avatar',
+    description: 'Description',
+    address: 'Address',
+    email: 'Email',
+    createTime: 'Add Time',
+    submit: 'Submit',
+    admin: 'admin',
+    selectDate: 'please select date',
+    selectRole: 'please select role',
+    success: 'Update successfully'
   },
-  password:{
-    oldPassword:'Old Password',
-    newPassword:'New Password',
-    repeatPassword:'Repeat Password',
-    submit:'Submit',
-    reset:'Reset',
-    msg1:'Old password can not be empty',
-    msg2:'The old password is not less than 6 letters',
-    msg3:'Please input password',
-    msg4:'Please input the password again',
-    msg5:'The two input password is inconsistent!',
-    success:'Update successfully'
+  password: {
+    oldPassword: 'Old Password',
+    newPassword: 'New Password',
+    repeatPassword: 'Repeat Password',
+    submit: 'Submit',
+    reset: 'Reset',
+    msg1: 'Old password can not be empty',
+    msg2: 'The old password is not less than 6 letters',
+    msg3: 'Please input password',
+    msg4: 'Please input the password again',
+    msg5: 'The two input password is inconsistent!',
+    msg6: 'The new password is not less than 6 letters',
+    success: 'Update successfully'
   }
 }

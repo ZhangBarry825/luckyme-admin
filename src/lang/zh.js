@@ -62,8 +62,8 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: '国际化',
     externalLink: '外链',
-    userInfo:'用户信息',
-    password:'用户密码',
+    userInfo: '用户信息',
+    password: '用户密码'
   },
   navbar: {
     logOut: '退出登录',
@@ -80,8 +80,8 @@ export default {
     username: '账号',
     password: '密码',
     any: '随便填',
-    inputAccount:'请输入正确的账号',
-    inputPassword:'请输入正确的密码',
+    inputAccount: '请输入正确的账号',
+    inputPassword: '请输入正确的密码',
     thirdparty: '第三方登录',
     thirdpartyTips: '本地不能模拟，请结合自己业务进行模拟！！！'
   },
@@ -157,31 +157,32 @@ export default {
     closeOthers: '关闭其它',
     closeAll: '关闭所有'
   },
-  userinfo:{
-    name:'昵称',
-    roles:'身份',
-    avatar:'头像',
-    description:'描述',
-    address:'地址',
-    email:'邮箱',
-    createTime:'创建时间',
-    submit:'确定',
-    admin:'管理员',
-    selectDate:'请选择日期',
-    selectRole:'请选择身份',
-    success:'修改成功'
+  userinfo: {
+    name: '昵称',
+    roles: '身份',
+    avatar: '头像',
+    description: '描述',
+    address: '地址',
+    email: '邮箱',
+    createTime: '创建时间',
+    submit: '确定',
+    admin: '管理员',
+    selectDate: '请选择日期',
+    selectRole: '请选择身份',
+    success: '修改成功'
   },
-  password:{
-    oldPassword:'旧密码',
-    newPassword:'新密码',
-    repeatPassword:'确认密码',
-    submit:'确定',
-    reset:'重置',
-    msg1:'旧密码不能为空',
-    msg2:'旧密码不能少于6位',
-    msg3:'请输入密码',
-    msg4:'请再次输入密码',
-    msg5:'两次输入密码不一致!',
-    success:'修改成功'
+  password: {
+    oldPassword: '旧密码',
+    newPassword: '新密码',
+    repeatPassword: '确认密码',
+    submit: '确定',
+    reset: '重置',
+    msg1: '旧密码不能为空',
+    msg2: '旧密码不能少于6位',
+    msg3: '请输入密码',
+    msg4: '请再次输入密码',
+    msg5: '两次输入密码不一致!',
+    msg6: '新密码不能少于6位',
+    success: '修改成功'
   }
 }
