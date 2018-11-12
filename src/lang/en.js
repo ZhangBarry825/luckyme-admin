@@ -184,5 +184,22 @@ export default {
     msg5: 'The two input password is inconsistent!',
     msg6: 'The new password is not less than 6 letters',
     success: 'Update successfully'
+  },
+  mConsole: {
+    newCreate: 'Create',
+    delete: 'Delete',
+    holdSpace: 'Please type words'
+  },
+  mTable:{
+    date: 'Date',
+    status: 'Status',
+    title: 'Title',
+    desc: 'Description',
+    looked: 'Views',
+    console:'Operation',
+    edit: 'Edit',
+    delete: 'Delete',
+    normal: 'Normal',
+    disabled: 'Disabled',
   }
 }

@@ -372,5 +372,19 @@ export const asyncRouterMap = [
     ]
   },
 
+  {
+    path: '/mytype',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/mytype/index'),
+        name: 'MyType',
+        meta: { title: 'mytype', icon: 'international' ,hidden:true},
+
+      }
+    ]
+  },
+
   { path: '*', redirect: '/404', hidden: true }
 ]

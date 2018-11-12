@@ -184,5 +184,22 @@ export default {
     msg5: '两次输入密码不一致!',
     msg6: '新密码不能少于6位',
     success: '修改成功'
+  },
+  mConsole: {
+    newCreate: '新建',
+    delete: '删除',
+    holdSpace: '请输入内容'
+  },
+  mTable:{
+    date: '日期',
+    status: '状态',
+    title: '标题',
+    desc: '描述',
+    looked: '浏览量',
+    console:'操作',
+    edit: '编辑',
+    delete: '删除',
+    normal: '正常',
+    disabled: '禁用',
   }
 }
