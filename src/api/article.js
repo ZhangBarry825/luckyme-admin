@@ -1,5 +1,28 @@
 import request from '@/utils/request'
 
+export function mFetchList(query) {
+  return request({
+    url: '/api/admin/article/listarticle',
+    method: 'get',
+    params: query
+  })
+}
+export function mDeleteArticle(query) {
+  return request({
+    url: '/api/admin/article/listarticle',
+    method: 'get',
+    params: query
+  })
+}
+
+
+
+
+
+
+
+
+
 export function fetchList(query) {
   return request({
     url: '/article/list',

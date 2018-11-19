@@ -24,13 +24,13 @@
     },
     methods:{
       newCreate(){
-        this.$emit('handCreate')
+        this.$emit('handleCreate')
       },
       handleDelete(){
-        this.$emit('handleDelete','a')
+        this.$emit('handleDelete')
       },
       handSearch(){
-        console.log('search')
+        this.$emit('handleSearch',this.searchKey)
       }
     }
   }

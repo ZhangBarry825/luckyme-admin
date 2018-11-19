@@ -9,21 +9,29 @@
       >
       <el-table-column
         type="selection"
-        width="55">
+        width="40">
+      </el-table-column>
+      <el-table-column
+        type="index"
+        label="#"
+        width="50"
+        show-overflow-tooltip>
       </el-table-column>
       <el-table-column
         :label="$t('mTable.date')"
-        width="120">
-        <template slot-scope="scope">{{ scope.row.date }}</template>
+        width="200">
+        <template slot-scope="scope">{{ scope.row.create_time }}</template>
       </el-table-column>
       <el-table-column
-        prop="name"
+        prop="title"
         :label="$t('mTable.title')"
-        width="150">
+        min-width="150"
+        show-overflow-tooltip>
       </el-table-column>
       <el-table-column
-        prop="address"
+        prop="description"
         :label="$t('mTable.desc')"
+        min-width="200"
         show-overflow-tooltip>
       </el-table-column>
       <el-table-column
@@ -61,9 +69,11 @@
       </el-table-column>
     </el-table>
     <el-pagination
+      class="page-wrap"
       background
+      @current-change="pageChange"
       layout="prev, pager, next"
-      :total="1000">
+      :total="allNum">
     </el-pagination>
   </div>
 </template>
@@ -73,58 +83,21 @@
     name: "mTable",
     data() {
       return {
-        tableData: [
-          {
-          id:1,
-          date: '2016-05-03',
-          status: 'normal',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          looked: 1
-        }, {
-          id:2,
-          date: '2016-05-02',
-          status: 'disabled',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          looked: 1
-        }, {
-          id:3,
-          date: '2016-05-04',
-          status: 'normal',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          looked: 1
-        }, {
-          id:4,
-          date: '2016-05-01',
-          status: 'normal',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          looked: 1
-        }, {
-          id:5,
-          date: '2016-05-08',
-          status: 'normal',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          looked: 1
-        }, {
-          date: '2016-05-06',
-          status: 'normal',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          looked: 1
-        }, {
-          id:6,
-          date: '2016-05-07',
-          status: 'normal',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          looked: 1
-        }
-        ],
         multipleSelection: []
+      }
+    },
+    props:{
+      tableData:{
+        type:Array,
+        default:()=>  {
+          return []
+        }
+      },
+      allNum:{
+        type:Number,
+        default: ()=> {
+          return 0
+        }
       }
     },
     methods: {
@@ -132,19 +105,23 @@
         return row.status === value;
       },
       handleEdit(index, row) {
-        console.log(index, row);
+        this.$emit('handleEdit',row);
       },
       handleDelete(index, row) {
         this.$emit('handleDelete',row);
       },
       handleSelect(selection){
         this.$emit('handleSelect',selection);
+      },
+      pageChange(page){
+        this.$emit('pageChange',page);
       }
-    },
-    watch:{}
+    }
   }
 </script>
 
 <style scoped lang="scss">
-
+.page-wrap{
+  margin: 10px 0;
+}
 </style>
