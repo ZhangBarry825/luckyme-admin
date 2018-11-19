@@ -201,5 +201,13 @@ export default {
     delete: 'Delete',
     normal: 'Normal',
     disabled: 'Disabled',
+  },
+  articleList:{
+    tip: 'Tip',
+    continue: 'Continue',
+    cancel: 'Cancel',
+    ifDelete: 'This action will  delete the file, whether to continue?',
+    atLeast: 'Select at least one record',
+    deleteSucc: 'Delete successfully!'
   }
 }

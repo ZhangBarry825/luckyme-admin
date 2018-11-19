@@ -201,5 +201,13 @@ export default {
     delete: '删除',
     normal: '正常',
     disabled: '禁用',
+  },
+  articleList:{
+    tip: '提示',
+    continue: '确定',
+    cancel: '取消',
+    ifDelete: '此操作将永久删除该文件, 是否继续?',
+    atLeast: '至少选择一条记录',
+    deleteSucc: '删除成功！',
   }
 }

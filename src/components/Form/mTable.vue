@@ -1,6 +1,7 @@
 <template>
   <div class="content-table">
     <el-table
+      v-loading="isLoading"
       ref="multipleTable"
       :data="tableData"
       tooltip-effect="dark"
@@ -97,6 +98,12 @@
         type:Number,
         default: ()=> {
           return 0
+        }
+      },
+      isLoading:{
+        type:Boolean,
+        default:()=>{
+          return false
         }
       }
     },

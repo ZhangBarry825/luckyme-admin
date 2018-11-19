@@ -373,14 +373,14 @@ export const asyncRouterMap = [
   },
 
   {
-    path: '/mytype',
+    path: '/article-list',
     component: Layout,
     children: [
       {
         path: 'index',
-        component: () => import('@/views/mytype/index'),
-        name: 'MyType',
-        meta: { title: 'mytype', icon: 'international' ,hidden:true},
+        component: () => import('@/views/article-list/index'),
+        name: 'ArticleList',
+        meta: { title: 'articleList', icon: 'international' ,hidden:true},
 
       }
     ]

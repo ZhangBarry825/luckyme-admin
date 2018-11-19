@@ -7,11 +7,11 @@ export function mFetchList(query) {
     params: query
   })
 }
-export function mDeleteArticle(query) {
+export function mDeleteArticle(data) {
   return request({
-    url: '/api/admin/article/listarticle',
-    method: 'get',
-    params: query
+    url: '/api/admin/article/deletearticle',
+    method: 'post',
+    data
   })
 }
 
