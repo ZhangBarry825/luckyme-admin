@@ -1,9 +1,10 @@
 <template>
   <div class="content-console">
+    <div class="title-bar"><h2>{{articleType}}</h2></div>
     <el-button size="mini" type="primary" @click="newCreate" icon="el-icon-edit">{{$t('mConsole.newCreate')}}</el-button>
     <el-button size="mini" type="danger" style="margin-right: 20px;" @click="handleDelete" icon="el-icon-delete">{{$t('mConsole.delete')}}</el-button>
     <div class="searchInput">
-      <el-input size="mini" style="position: relative;top: 1px;" v-model="searchKey" :placeholder="$t('mConsole.holdSpace')">
+      <el-input size="mini" @keyup.enter.native="handSearch" style="position: relative;top: 1px;" v-model="searchKey" :placeholder="$t('mConsole.holdSpace')">
         <el-button slot="append"  icon="el-icon-search" @click="handSearch"></el-button>
       </el-input>
     </div>
@@ -20,6 +21,14 @@
     data(){
       return{
         searchKey:''
+      }
+    },
+    props:{
+      articleType:{
+        type:String,
+        defaulet:()=>{
+          return '文章类型'
+        }
       }
     },
     methods:{
@@ -39,6 +48,18 @@
 <style scoped lang="scss">
   .content-console {
     padding: 10px 0;
+    .title-bar{
+      /*background-color: gainsboro;*/
+      border-left: 5px solid gray;
+      padding-left: 10px;
+      margin: 10px 0;
+      h2{
+        padding: 3px 0;
+        font-size: 16px;
+        color: rgba(75,75,75,0.73);
+        font-weight: normal;
+      }
+    }
     .searchInput{
       display: inline-block;
       width: 200px;

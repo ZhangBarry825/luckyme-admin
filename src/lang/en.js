@@ -188,7 +188,7 @@ export default {
   mConsole: {
     newCreate: 'Create',
     delete: 'Delete',
-    holdSpace: 'Please type words'
+    holdSpace: 'Search by keyword'
   },
   mTable:{
     date: 'Date',
@@ -209,5 +209,23 @@ export default {
     ifDelete: 'This action will  delete the file, whether to continue?',
     atLeast: 'Select at least one record',
     deleteSucc: 'Delete successfully!'
+  },
+  articleDetail:{
+    publish: 'Publish',
+    draft: 'Draft',
+    title: 'Title',
+    type: 'Article Type',
+    description: 'Description',
+    select: 'Please Select',
+    status: 'Status',
+    normal: 'Normal',
+    disabled: 'Disabled',
+    createTime: 'Publish Date',
+    selectDate: 'Select Date',
+    inputPlease:'Please type description',
+    must: ' is must',
+    word: 'words',
+    success: 'Success',
+    publishSuccess: 'Publish success',
   }
 }

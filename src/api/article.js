@@ -14,7 +14,13 @@ export function mDeleteArticle(data) {
     data
   })
 }
-
+export function mSearchArticle(query) {
+  return request({
+    url: '/api/admin/article/searcharticle',
+    method: 'get',
+    params: query
+  })
+}
 
 
 

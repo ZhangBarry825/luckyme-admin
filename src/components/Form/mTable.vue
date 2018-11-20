@@ -32,7 +32,7 @@
       <el-table-column
         prop="description"
         :label="$t('mTable.desc')"
-        min-width="200"
+        min-width="100"
         show-overflow-tooltip>
       </el-table-column>
       <el-table-column
@@ -74,7 +74,8 @@
       background
       @current-change="pageChange"
       layout="prev, pager, next"
-      :total="allNum">
+      :total="allNum"
+      :current-page="currentPage">
     </el-pagination>
   </div>
 </template>
@@ -84,7 +85,8 @@
     name: "mTable",
     data() {
       return {
-        multipleSelection: []
+        multipleSelection: [],
+        currentPage:3
       }
     },
     props:{
@@ -108,6 +110,10 @@
       }
     },
     methods: {
+      refreshPage(page=1){
+        this.currentPage=page
+        console.log(this.currentPage)
+      },
       filterTag(value, row) {
         return row.status === value;
       },
@@ -121,6 +127,7 @@
         this.$emit('handleSelect',selection);
       },
       pageChange(page){
+        this.currentPage=page
         this.$emit('pageChange',page);
       }
     }

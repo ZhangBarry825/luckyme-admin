@@ -209,5 +209,23 @@ export default {
     ifDelete: '此操作将永久删除该文件, 是否继续?',
     atLeast: '至少选择一条记录',
     deleteSucc: '删除成功！',
+  },
+  articleDetail:{
+    publish: '发布',
+    draft: '草稿',
+    title: '标题',
+    type: '文章分类',
+    description: '摘要',
+    select: '请选择',
+    status: '状态',
+    normal: '正常',
+    disabled: '禁用',
+    createTime: '发布时间',
+    selectDate: '选择日期时间',
+    inputPlease:'请输入摘要',
+    must: '为必填项',
+    word: '字',
+    success: '成功',
+    publishSuccess: '发布文章成功',
   }
 }

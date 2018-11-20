@@ -189,37 +189,37 @@ export const asyncRouterMap = [
   nestedRouter,
   tableRouter,
 
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/list',
-    name: 'Example',
-    meta: {
-      title: 'example',
-      icon: 'example'
-    },
-    children: [
-      {
-        path: 'create',
-        component: () => import('@/views/example/create'),
-        name: 'CreateArticle',
-        meta: { title: 'createArticle', icon: 'edit' }
-      },
-      {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/example/edit'),
-        name: 'EditArticle',
-        meta: { title: 'editArticle', noCache: true },
-        hidden: true
-      },
-      {
-        path: 'list',
-        component: () => import('@/views/example/list'),
-        name: 'ArticleList',
-        meta: { title: 'articleList', icon: 'list' }
-      }
-    ]
-  },
+  // {
+  //   path: '/example',
+  //   component: Layout,
+  //   redirect: '/example/list',
+  //   name: 'Example',
+  //   meta: {
+  //     title: 'example',
+  //     icon: 'example'
+  //   },
+  //   children: [
+  //     // {
+  //     //   path: 'create',
+  //     //   component: () => import('@/views/example/create'),
+  //     //   name: 'CreateArticle',
+  //     //   meta: { title: 'createArticle', icon: 'edit' }
+  //     // },
+  //     // {
+  //     //   path: 'edit/:id(\\d+)',
+  //     //   component: () => import('@/views/example/edit'),
+  //     //   name: 'EditArticle',
+  //     //   meta: { title: 'editArticle', noCache: true },
+  //     //   hidden: true
+  //     // },
+  //     // {
+  //     //   path: 'list',
+  //     //   component: () => import('@/views/example/list'),
+  //     //   name: 'ArticleList',
+  //     //   meta: { title: 'articleList', icon: 'list' }
+  //     // }
+  //   ]
+  // },
 
   {
     path: '/tab',
@@ -373,16 +373,28 @@ export const asyncRouterMap = [
   },
 
   {
-    path: '/article-list',
+    path: '/article',
     component: Layout,
+    meta: {icon: 'list' },
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/article-list/index'),
+        path: 'list',
+        component: () => import('@/views/article/list'),
         name: 'ArticleList',
-        meta: { title: 'articleList', icon: 'international' ,hidden:true},
-
-      }
+        meta: { title: 'articleList', icon: 'list' ,hidden:false},
+      },
+      {
+        path: 'edit',
+        component: () => import('@/views/article/edit'),
+        name: 'editArticle',
+        meta: { title: 'editArticle', icon: 'edit' ,hidden:false},
+      },
+      {
+        path: 'create',
+        component: () => import('@/views/article/create'),
+        name: 'CreateArticle',
+        meta: { title: 'createArticle', icon: 'edit',hidden:false }
+      },
     ]
   },
 
