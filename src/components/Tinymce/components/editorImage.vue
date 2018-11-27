@@ -1,6 +1,6 @@
 <template>
   <div class="upload-container">
-    <el-button :style="{background:color,borderColor:color}" icon="el-icon-upload" size="mini" type="primary" @click=" dialogVisible=true">{{$t('articleDetail.uploadImage')}}
+    <el-button :style="{background:color,borderColor:color}" icon="el-icon-upload" size="mini" type="primary" @click=" dialogVisible=true">{{ $t('articleDetail.uploadImage') }}
     </el-button>
     <el-dialog :visible.sync="dialogVisible">
       <el-upload
@@ -10,14 +10,14 @@
         :on-remove="handleRemove"
         :on-success="handleSuccess"
         :before-upload="beforeUpload"
-        class="editor-slide-upload"
         :action="baseUrl"
+        class="editor-slide-upload"
         name="files"
         list-type="picture-card">
-        <el-button size="small" type="primary">{{$t('articleDetail.orImg')}}</el-button>
+        <el-button size="small" type="primary">{{ $t('articleDetail.orImg') }}</el-button>
       </el-upload>
-      <el-button @click="dialogVisible = false">{{$t('articleDetail.cancel')}}</el-button>
-      <el-button type="primary" @click="handleSubmit">{{$t('articleDetail.continue')}}</el-button>
+      <el-button @click="dialogVisible = false">{{ $t('articleDetail.cancel') }}</el-button>
+      <el-button type="primary" @click="handleSubmit">{{ $t('articleDetail.continue') }}</el-button>
     </el-dialog>
   </div>
 </template>
@@ -38,7 +38,8 @@ export default {
       dialogVisible: false,
       listObj: {},
       fileList: [],
-      baseUrl: this.GLOBALDATA.serverUrl+'admin/upload/upload',
+      baseUrl: this.GLOBALDATA.serverUrl + 'admin/upload/upload',
+      serverUrl: this.GLOBALDATA.serverUrl
     }
   },
   methods: {
@@ -57,15 +58,11 @@ export default {
       this.dialogVisible = false
     },
     handleSuccess(response, file) {
-      console.log(response,'response')
-      console.log(file,'file')
-
       const uid = file.uid
       const objKeyArr = Object.keys(this.listObj)
-      console.log(objKeyArr,123123)
       for (let i = 0, len = objKeyArr.length; i < len; i++) {
         if (this.listObj[objKeyArr[i]].uid === uid) {
-          this.listObj[objKeyArr[i]].url = response.files.file
+          this.listObj[objKeyArr[i]].url = this.serverUrl + response.data
           this.listObj[objKeyArr[i]].hasSuccess = true
           return
         }
@@ -106,4 +103,10 @@ export default {
     width: 100%;
   }
 }
+  .el-upload-list__item-actions{
+    img{
+      vertical-align:middle;
+      object-fit: cover
+    }
+  }
 </style>
