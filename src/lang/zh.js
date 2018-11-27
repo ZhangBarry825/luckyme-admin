@@ -211,6 +211,8 @@ export default {
     deleteSucc: '删除成功！',
   },
   articleDetail:{
+    continue: '确定',
+    cancel: '取消',
     publish: '发布',
     draft: '草稿',
     title: '标题',
@@ -227,5 +229,12 @@ export default {
     word: '字',
     success: '成功',
     publishSuccess: '发布文章成功',
+    typeTitle: '请填写标题',
+    typeCreateTime: '请填写发布时间',
+    typeContent: '请填写必要的摘要和内容',
+    uploadImg: '将封面图片拖到此处，或',
+    orImg: '点击上传',
+    uploadImage: '上传图片',
+    waitUpload:'请等待所有图片上传成功 或 出现了网络问题，请刷新页面重新上传！',
   }
 }

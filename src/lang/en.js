@@ -211,6 +211,8 @@ export default {
     deleteSucc: 'Delete successfully!'
   },
   articleDetail:{
+    continue: 'Continue',
+    cancel: 'Cancel',
     publish: 'Publish',
     draft: 'Draft',
     title: 'Title',
@@ -227,5 +229,12 @@ export default {
     word: 'words',
     success: 'Success',
     publishSuccess: 'Publish success',
+    typeTitle: 'Please type Title',
+    typeCreateTime: 'Please select Publish Date',
+    typeContent: 'Please type some necessary Description and Content',
+    uploadImg: 'Drag the cover image here, or',
+    orImg: 'Click to upload',
+    uploadImage: 'Upload Image',
+    waitUpload:'Please wait for all pictures uploaded successfully or network problems,please refresh the page to upload again!',
   }
 }

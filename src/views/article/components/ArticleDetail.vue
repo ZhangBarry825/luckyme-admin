@@ -1,8 +1,8 @@
 <template>
-  <div class="createPost-container">
-    <el-form ref="postForm" :model="postForm" :rules="rules" class="form-container">
+  <div class="createPost-container" >
+    <el-form ref="postForm" :model="postForm" class="form-container">
 
-      <sticky :class-name="'sub-navbar '+postForm.status">
+      <sticky :class-name="'sub-navbar '+postForm.art_status">
         <!--<CommentDropdown v-model="postForm.comment_disabled" />-->
         <!--<PlatformDropdown v-model="postForm.platforms" />-->
         <!--<SourceUrlDropdown v-model="postForm.source_uri" />-->
@@ -24,8 +24,8 @@
 
             <div class="postInfo-container">
               <el-row>
-                <el-col :span="6">
-                  <el-form-item label-width="100px" :label="$t('articleDetail.type')+':'" class="postInfo-container-item">
+                <el-col :span="10">
+                  <el-form-item label-width="105px" :label="$t('articleDetail.type')+':'" class="postInfo-container-item">
                     <el-select v-model="postForm.type" :placeholder="$t('articleDetail.select')">
                       <!--<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>-->
                       <el-option   label="心路历程" value="心路历程"></el-option>
@@ -33,17 +33,19 @@
                     </el-select>
                   </el-form-item>
                 </el-col>
-
+              </el-row>
+              <el-row>
                 <el-col :span="10">
-                  <el-form-item label-width="120px" :label="$t('articleDetail.createTime')+':'" class="postInfo-container-item">
-                    <el-date-picker v-model="postForm.display_time" type="datetime" format="yyyy-MM-dd HH:mm:ss" :placeholder="$t('articleDetail.selectDate')"/>
+                  <el-form-item label-width="105px" :label="$t('articleDetail.createTime')+':'" class="postInfo-container-item">
+                    <el-date-picker v-model="postForm.display_time" type="datetime" value-format="timestamp" format="yyyy-MM-dd HH:mm:ss" :placeholder="$t('articleDetail.selectDate')"/>
                   </el-form-item>
                 </el-col>
-
-                <el-col :span="6">
-                  <el-form-item label-width="60px" :label="$t('articleDetail.status')+':'" class="postInfo-container-item">
+              </el-row>
+              <el-row>
+                <el-col :span="7">
+                  <el-form-item label-width="105px" :label="$t('articleDetail.status')+':'" class="postInfo-container-item">
                     <el-switch
-                      v-model="postForm.mStatus"
+                      v-model="postForm.status"
                       active-color="#ff4949"
                       inactive-color="#13ce66"
                       active-value="disabled"
@@ -58,8 +60,8 @@
           </el-col>
         </el-row>
 
-        <el-form-item  style="margin-bottom: 40px;"  label-width="100px"  :label="$t('articleDetail.description')+':'">
-          <el-input :rows="1" v-model="postForm.content_short" type="textarea" class="article-textarea" autosize :placeholder="$t('articleDetail.inputPlease')"/>
+        <el-form-item  style="margin-bottom: 40px;"  label-width="105px"  :label="$t('articleDetail.description')+':'">
+          <el-input :rows="1" v-model="postForm.description" type="textarea" class="article-textarea" autosize :placeholder="$t('articleDetail.inputPlease')"/>
           <span v-show="contentShortLength" class="word-counter">{{ contentShortLength }} {{$t('articleDetail.word')}}</span>
         </el-form-item>
 
@@ -68,7 +70,7 @@
         </div>
 
         <div style="margin-bottom: 20px;">
-          <Upload v-model="postForm.image_uri" />
+          <Upload @input="uploadCover" v-model="postForm.cover" />
         </div>
       </div>
     </el-form>
@@ -88,14 +90,14 @@ import Warning from './Warning'
 import { CommentDropdown, PlatformDropdown, SourceUrlDropdown } from './Dropdown'
 
 const defaultForm = {
-  mstatus:'normal',
-  status: 'draft',
+  status:'normal',
+  art_status: 'draft',
   title: '', // 文章题目
   content: '', // 文章内容
-  content_short: '', // 文章摘要
+  description: '', // 文章摘要
   source_uri: '', // 文章外链
-  image_uri: '', // 文章图片
-  display_time: undefined, // 前台展示时间
+  cover:'',//文章封面
+  display_time: '', // 前台展示时间
   id: undefined,
   platforms: ['a-platform'],
   comment_disabled: false,
@@ -112,48 +114,48 @@ export default {
     }
   },
   data() {
-    const validateRequire = (rule, value, callback) => {
-      if (value === '') {
-        this.$message({
-          message: rule.field + this.$t('articleDetail.must'),
-          type: 'error'
-        })
-        callback(new Error(rule.field + this.$t('articleDetail.must')))
-      } else {
-        callback()
-      }
-    }
-    const validateSourceUri = (rule, value, callback) => {
-      if (value) {
-        if (validateURL(value)) {
-          callback()
-        } else {
-          this.$message({
-            message: '外链url填写不正确',
-            type: 'error'
-          })
-          callback(new Error('外链url填写不正确'))
-        }
-      } else {
-        callback()
-      }
-    }
+    // const validateRequire = (rule, value, callback) => {
+    //   if (value === '') {
+    //     this.$message({
+    //       message: rule.field + this.$t('articleDetail.must'),
+    //       type: 'error'
+    //     })
+    //     callback(new Error(rule.field + this.$t('articleDetail.must')))
+    //   } else {
+    //     callback()
+    //   }
+    // }
+    // const validateSourceUri = (rule, value, callback) => {
+    //   if (value) {
+    //     if (validateURL(value)) {
+    //       callback()
+    //     } else {
+    //       this.$message({
+    //         message: '外链url填写不正确',
+    //         type: 'error'
+    //       })
+    //       callback(new Error('外链url填写不正确'))
+    //     }
+    //   } else {
+    //     callback()
+    //   }
+    // }
     return {
       postForm: Object.assign({}, defaultForm),
       loading: false,
       userListOptions: [],
-      rules: {
-        image_uri: [{ validator: validateRequire }],
-        title: [{ validator: validateRequire }],
-        content: [{ validator: validateRequire }],
-        source_uri: [{ validator: validateSourceUri, trigger: 'blur' }]
-      },
+      // rules: {
+      //   cover: [{ validator: validateRequire }],
+      //   title: [{ validator: validateRequire }],
+      //   content: [{ validator: validateRequire }],
+      //   source_uri: [{ validator: validateSourceUri, trigger: 'blur' }]
+      // },
       tempRoute: {}
     }
   },
   computed: {
     contentShortLength() {
-      return this.postForm.content_short.length
+      return this.postForm.description.length
     },
     lang() {
       return this.$store.getters.language
@@ -173,12 +175,15 @@ export default {
     this.tempRoute = Object.assign({}, this.$route)
   },
   methods: {
+    uploadCover(data){
+      console.log(data,'cover')
+    },
     fetchData(id) {
       fetchArticle(id).then(response => {
         this.postForm = response.data
         // Just for test
         this.postForm.title += `   Article Id:${this.postForm.id}`
-        this.postForm.content_short += `   Article Id:${this.postForm.id}`
+        this.postForm.description += `   Article Id:${this.postForm.id}`
 
         // Set tagsview title
         this.setTagsViewTitle()
@@ -191,9 +196,49 @@ export default {
       const route = Object.assign({}, this.tempRoute, { title: `${title}-${this.postForm.id}` })
       this.$store.dispatch('updateVisitedView', route)
     },
+    validateItem(){
+      if (this.postForm.title.length === 0) {
+        this.$message({
+          message: this.$t('articleDetail.typeTitle'),
+          type: 'warning'
+        })
+        return false
+      }else if(this.postForm.display_time.length === 0){
+        this.$message({
+          message: this.$t('articleDetail.typeCreateTime'),
+          type: 'warning'
+        })
+        return false
+      }else if(this.postForm.description.length === 0 || this.postForm.content.length === 0){
+        this.$message({
+          message: this.$t('articleDetail.typeContent'),
+          type: 'warning'
+        })
+        return false
+      }else {
+        return true
+      }
+    },
     submitForm() {
-      this.postForm.display_time = parseInt(this.display_time / 1000)
+      if(this.postForm.display_time>1000000000000){
+        this.postForm.display_time = parseInt(this.postForm.display_time / 1000)
+      }
+      if(!this.validateItem()){
+        return
+      }
       console.log(this.postForm)
+      let artToSubmit={
+        title:this.postForm.title,
+        type:this.postForm.type,
+        status:this.postForm.status,
+        create_time:this.postForm.display_time,
+        update_time:this.postForm.display_time,
+        description:this.postForm.description,
+        content:this.postForm.content,
+        cover:this.postForm.cover,
+      }
+
+
       this.$refs.postForm.validate(valid => {
         if (valid) {
           this.loading = true
@@ -205,7 +250,7 @@ export default {
             type: 'success',
             duration: 2000
           })
-          this.postForm.status = 'published'
+          this.postForm.art_status = 'published'
           this.loading = false
         } else {
           console.log('error submit!!')
@@ -227,7 +272,7 @@ export default {
         showClose: true,
         duration: 1000
       })
-      this.postForm.status = 'draft'
+      this.postForm.art_status = 'draft'
     },
     getRemoteUserList(query) {
       userSearch(query).then(response => {
