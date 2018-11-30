@@ -63,7 +63,8 @@ export default {
     i18n: 'I18n',
     externalLink: 'External Link',
     userInfo: 'User Info',
-    password: 'User Password'
+    password: 'User Password',
+    draft: 'Draft'
   },
   navbar: {
     logOut: 'Log Out',
@@ -190,27 +191,36 @@ export default {
     delete: 'Delete',
     holdSpace: 'Search by keyword'
   },
-  mTable:{
+  mTable: {
     date: 'Date',
     status: 'Status',
     title: 'Title',
     desc: 'Description',
+    type: 'Type',
     looked: 'Views',
-    console:'Operation',
+    console: 'Operation',
     edit: 'Edit',
     delete: 'Delete',
     normal: 'Normal',
-    disabled: 'Disabled',
+    disabled: 'Disabled'
   },
-  articleList:{
+  articleList: {
     tip: 'Tip',
     continue: 'Continue',
     cancel: 'Cancel',
     ifDelete: 'This action will  delete the file, whether to continue?',
     atLeast: 'Select at least one record',
-    deleteSucc: 'Delete successfully!'
+    deleteSucc: 'Delete successfully!',
+    type1: 'type1',
+    type2: 'type2',
+    type3: 'type3',
+    type4: 'type4',
+    type5: 'type5',
+    type6: 'type6',
+    type7: 'type7',
+    type8: 'type8'
   },
-  articleDetail:{
+  articleDetail: {
     continue: 'Continue',
     cancel: 'Cancel',
     publish: 'Publish',
@@ -224,17 +234,23 @@ export default {
     disabled: 'Disabled',
     createTime: 'Publish Date',
     selectDate: 'Select Date',
-    inputPlease:'Please type description',
+    inputPlease: 'Please type description',
     must: ' is must',
     word: 'words',
     success: 'Success',
     publishSuccess: 'Publish success',
+    draftSuccess: 'Save draft success',
     typeTitle: 'Please type Title',
+    typeType: 'Please select Article Type',
     typeCreateTime: 'Please select Publish Date',
-    typeContent: 'Please type some necessary Description and Content',
+    typeContent: 'Please type necessary Description and Content',
+    wordsOver: 'Article abstracts should not exceed 300 words',
     uploadImg: 'Drag the cover image here, or',
     orImg: 'Click to upload',
     uploadImage: 'Upload Image',
-    waitUpload:'Please wait for all pictures uploaded successfully or network problems,please refresh the page to upload again!',
+    waitUpload: 'Please wait for all pictures uploaded successfully or network problems,please refresh the page to upload again!'
+  },
+  draft: {
+    title: 'Draft List'
   }
 }

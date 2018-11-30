@@ -8,10 +8,10 @@
 <script>
 import mTable from '@/components/Form/mTable.vue'
 import mConsole from '@/components/Form/mConsole.vue'
-import { mFetchList, mDeleteArticle, mSearchArticle } from '@/api/article'
+import { mFetchDraftList, mDeleteDraft, mSearchDraft } from '@/api/article'
 import { scrollToTop } from '@/utils/mMethods'
 export default {
-  name: 'ArticleList',
+  name: 'Draft',
   components: { mTable, mConsole },
   data() {
     return {
@@ -20,7 +20,7 @@ export default {
       allNum: 0,
       nowNum: 1,
       isLoading: false,
-      articleType: '心路历程',
+      articleType: this.$t('draft.title'),
       isSearch: false,
       searchKey: ''
     }
@@ -34,7 +34,7 @@ export default {
     },
     handleEdit(row) {
       console.log(row)
-      this.$router.push({ path: '/article/edit', query: { id: row.id, type: 'article' }})
+      this.$router.push({ path: '/article/edit', query: { id: row.id, type: 'draft' }})
     },
     handleSearch(searchKey) {
       this.searchKey = searchKey
@@ -64,7 +64,7 @@ export default {
           const mData = {
             id: '[' + toDeleteID.join(',') + ']'
           }
-          mDeleteArticle(mData).then((response) => {
+          mDeleteDraft(mData).then((response) => {
             this.$message({
               type: 'success',
               message: this.$t('articleList.deleteSucc')
@@ -87,7 +87,7 @@ export default {
         const mData = {
           id: data.id
         }
-        mDeleteArticle(mData).then((response) => {
+        mDeleteDraft(mData).then((response) => {
           this.$message({
             type: 'success',
             message: this.$t('articleList.deleteSucc')
@@ -96,24 +96,24 @@ export default {
         })
       }).catch(() => {})
     },
-    tableLoad(page_num = 1, page_size = 10, type = this.articleType) {
+    tableLoad(page_num = 1, page_size = 10) {
       if (this.isSearch) {
         var data = {
           page_num: page_num,
           page_size: page_size,
-          type: type,
+          // type:type,
           key: this.searchKey
         }
       } else {
         var data = {
           page_num: page_num,
-          page_size: page_size,
-          type: type
+          page_size: page_size
+          // type:type
         }
       }
       this.isLoading = true
       if (this.isSearch) {
-        mSearchArticle(data).then((response) => {
+        mSearchDraft(data).then((response) => {
           if (response.data.total || page_num == 1) {
             this.isLoading = false
             this.allNum = response.data.total
@@ -126,7 +126,7 @@ export default {
           }
         })
       } else {
-        mFetchList(data).then((response) => {
+        mFetchDraftList(data).then((response) => {
           if (response.data.total || page_num == 1) {
             this.isLoading = false
             this.allNum = response.data.total

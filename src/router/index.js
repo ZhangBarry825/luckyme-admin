@@ -105,7 +105,7 @@ export const constantRouterMap = [
     path: '/userinfo',
     component: Layout,
     redirect: '/userinfo/index',
-    hidden:true,
+    hidden: true,
     children: [
       {
         path: 'index',
@@ -119,7 +119,7 @@ export const constantRouterMap = [
     path: '/password',
     component: Layout,
     redirect: '/password/index',
-    hidden:true,
+    hidden: true,
     children: [
       {
         path: 'index',
@@ -128,7 +128,7 @@ export const constantRouterMap = [
         meta: { title: 'password', icon: 'guide', noCache: true }
       }
     ]
-  },
+  }
 ]
 
 export default new Router({
@@ -371,30 +371,41 @@ export const asyncRouterMap = [
       }
     ]
   },
-
+  {
+    path: '/draft',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/draft/list'),
+        name: 'Draft',
+        meta: { title: 'draft', icon: 'list' }
+      }
+    ]
+  },
   {
     path: '/article',
     component: Layout,
-    meta: {icon: 'list' },
+    meta: { icon: 'list' },
     children: [
       {
         path: 'list',
         component: () => import('@/views/article/list'),
         name: 'ArticleList',
-        meta: { title: 'articleList', icon: 'list' ,hidden:false},
+        meta: { title: 'articleList', icon: 'list', hidden: false }
       },
       {
         path: 'edit',
         component: () => import('@/views/article/edit'),
         name: 'editArticle',
-        meta: { title: 'editArticle', icon: 'edit' ,hidden:false},
+        meta: { title: 'editArticle', icon: 'edit', hidden: false }
       },
       {
         path: 'create',
         component: () => import('@/views/article/create'),
         name: 'CreateArticle',
-        meta: { title: 'createArticle', icon: 'edit',hidden:false }
-      },
+        meta: { title: 'createArticle', icon: 'edit', hidden: false }
+      }
     ]
   },
 

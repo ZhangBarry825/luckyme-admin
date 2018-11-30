@@ -63,7 +63,8 @@ export default {
     i18n: '国际化',
     externalLink: '外链',
     userInfo: '用户信息',
-    password: '用户密码'
+    password: '用户密码',
+    draft: '草稿箱'
   },
   navbar: {
     logOut: '退出登录',
@@ -190,27 +191,36 @@ export default {
     delete: '删除',
     holdSpace: '请输入内容'
   },
-  mTable:{
+  mTable: {
     date: '日期',
     status: '状态',
     title: '标题',
     desc: '描述',
+    type: '分类',
     looked: '浏览量',
-    console:'操作',
+    console: '操作',
     edit: '编辑',
     delete: '删除',
     normal: '正常',
-    disabled: '禁用',
+    disabled: '禁用'
   },
-  articleList:{
+  articleList: {
     tip: '提示',
     continue: '确定',
     cancel: '取消',
     ifDelete: '此操作将永久删除该文件, 是否继续?',
     atLeast: '至少选择一条记录',
     deleteSucc: '删除成功！',
+    type1: 'type1',
+    type2: 'type2',
+    type3: 'type3',
+    type4: 'type4',
+    type5: 'type5',
+    type6: 'type6',
+    type7: 'type7',
+    type8: 'type8'
   },
-  articleDetail:{
+  articleDetail: {
     continue: '确定',
     cancel: '取消',
     publish: '发布',
@@ -224,17 +234,23 @@ export default {
     disabled: '禁用',
     createTime: '发布时间',
     selectDate: '选择日期时间',
-    inputPlease:'请输入摘要',
+    inputPlease: '请输入摘要',
     must: '为必填项',
     word: '字',
     success: '成功',
     publishSuccess: '发布文章成功',
+    draftSuccess: '保存草稿成功',
     typeTitle: '请填写标题',
+    typeType: '请选择文章分类',
     typeCreateTime: '请填写发布时间',
     typeContent: '请填写必要的摘要和内容',
+    wordsOver: '文章摘要不要超过300字',
     uploadImg: '将封面图片拖到此处，或',
     orImg: '点击上传',
     uploadImage: '上传图片',
-    waitUpload:'请等待所有图片上传成功 或 出现了网络问题，请刷新页面重新上传！',
+    waitUpload: '请等待所有图片上传成功 或 出现了网络问题，请刷新页面重新上传！'
+  },
+  draft: {
+    title: '草稿箱'
   }
 }
