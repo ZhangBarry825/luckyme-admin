@@ -33,6 +33,7 @@
         show-overflow-tooltip/>
       <el-table-column
         :label="$t('mTable.type')"
+        :formatter="formatType"
         prop="type"
         min-width="100"
         show-overflow-tooltip/>
@@ -100,6 +101,12 @@ export default {
       default: () => {
         return false
       }
+    },
+    typeList:{
+      type: Array,
+      default: () => {
+        return []
+      }
     }
   },
   data() {
@@ -108,7 +115,26 @@ export default {
       currentPage: 3
     }
   },
+  computed: {
+    lang() {
+      return this.$store.getters.language
+    }
+  },
   methods: {
+    formatType(row, column){
+      console.log(this.lang)
+      for(let i =0;i<this.typeList.length;i++){
+        if(row.type==this.typeList[i]['name']){
+          if(this.lang==='zh'){
+            return this.typeList[i]['cn_name']
+          }
+          if(this.lang==='en'){
+            return this.typeList[i]['en_name']
+          }
+        }
+      }
+      return this.lang==='zh'? '未知' :  'unknown'
+    },
     refreshPage(page = 1) {
       this.currentPage = page
       console.log(this.currentPage)

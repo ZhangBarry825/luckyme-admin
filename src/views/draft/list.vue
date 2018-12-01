@@ -1,14 +1,14 @@
 <template>
   <div class="content-mytype">
     <mConsole :article-type="articleType" @handleCreate="handleCreate" @handleDelete="consoleDelete" @handleSearch="handleSearch"/>
-    <mTable ref="mtable" :table-data="tableData" :all-num="allNum" :is-loading="isLoading" @handleDelete="tableDelete" @handleSelect="handleSelect" @handleEdit="handleEdit" @pageChange="tableLoad" />
+    <mTable ref="mtable" :typeList="typeList" :table-data="tableData" :all-num="allNum" :is-loading="isLoading" @handleDelete="tableDelete" @handleSelect="handleSelect" @handleEdit="handleEdit" @pageChange="tableLoad" />
   </div>
 </template>
 
 <script>
 import mTable from '@/components/Form/mTable.vue'
 import mConsole from '@/components/Form/mConsole.vue'
-import { mFetchDraftList, mDeleteDraft, mSearchDraft } from '@/api/article'
+import { mFetchDraftList, mDeleteDraft, mSearchDraft,mTypeList } from '@/api/article'
 import { scrollToTop } from '@/utils/mMethods'
 export default {
   name: 'Draft',
@@ -22,10 +22,22 @@ export default {
       isLoading: false,
       articleType: this.$t('draft.title'),
       isSearch: false,
-      searchKey: ''
+      searchKey: '',
+      typeList:[]
     }
   },
   mounted() {
+    const data = {
+      all: true,
+      page_num: 1,
+      page_size: 10
+    }
+    mTypeList(data).then((response) => {
+      console.log(response.data)
+      if (response.code == 200) {
+        this.typeList = response.data.types
+      }
+    }).catch((err) => {})
     this.tableLoad()
   },
   methods: {

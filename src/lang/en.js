@@ -64,7 +64,7 @@ export default {
     externalLink: 'External Link',
     userInfo: 'User Info',
     password: 'User Password',
-    draft: 'Draft'
+    draft: 'Draft List'
   },
   navbar: {
     logOut: 'Log Out',

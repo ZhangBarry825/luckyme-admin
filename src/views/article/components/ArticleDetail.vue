@@ -31,7 +31,7 @@
                     :label="$t('articleDetail.type')+':'"
                     label-width="105px"
                     class="postInfo-container-item">
-                    <el-select v-model="postForm.type" :placeholder="$t('articleDetail.select')">
+                    <el-select v-model="postForm.type" @change="changeType"  :placeholder="$t('articleDetail.select')">
                       <el-option v-for="item in typeList" v-if="lang === 'zh'" :label="item.cn_name" :key="item.name" :value="item.name"/>
                       <el-option v-for="item in typeList" v-if="lang === 'en'" :label="item.en_name" :key="item.name" :value="item.name"/>
                     </el-select>
@@ -120,6 +120,7 @@ const defaultForm = {
   source_uri: '', // 文章外链
   cover: '', // 文章封面
   display_time: '', // 前台展示时间
+  type: '', // 文章类型
   id: undefined,
   platforms: ['a-platform'],
   comment_disabled: false,
@@ -166,10 +167,6 @@ export default {
     } else {
       this.postForm = Object.assign({}, defaultForm)
     }
-
-    // Why need to make a copy of this.$route here?
-    // Because if you enter this page and quickly switch tag, may be in the execution of the setTagsViewTitle function, this.$route is no longer pointing to the current page
-    // https://github.com/PanJiaChen/vue-element-admin/issues/1221
     this.tempRoute = Object.assign({}, this.$route)
   },
   mounted() {
@@ -183,11 +180,13 @@ export default {
       if (response.code == 200) {
         this.typeList = response.data.types
       }
-    }).catch((err) => {
-
-    })
+    }).catch((err) => {})
   },
   methods: {
+    changeType(val){
+      console.log(this.postForm.type)
+      // this.postForm.type=val
+    },
     uploadCover(data) {
       console.log(data, 'cover')
     },
@@ -247,7 +246,7 @@ export default {
           type: 'warning'
         })
         return false
-      } else if (this.postForm.type === undefined) {
+      } else if (this.postForm.type === undefined || this.postForm.type === '') {
         this.$message({
           message: this.$t('articleDetail.typeType'),
           type: 'warning'
