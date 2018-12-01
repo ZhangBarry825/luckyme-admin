@@ -3,7 +3,11 @@
     <el-form ref="form" :model="form" label-width="100px">
       <el-form-item :label="$t('userinfo.avatar')">
         <el-input v-model="form.avatar" style="display: none"></el-input>
-        <img class="avatar" :src="form.avatar" @click="uploadAvatar">
+        <a  @click="uploadAvatar">
+          <pan-thumb class="avatar" width="100px" height="100px" :image="form.avatar">
+            <div class="words">click<br>to<br>change</div>
+          </pan-thumb>
+        </a>
         <input type="file" @change="uploadFile($event)" id="avatarInput" style="display: none">
       </el-form-item>
       <el-form-item :label="$t('userinfo.name')">
@@ -22,7 +26,8 @@
       </el-form-item>
       <el-form-item :label="$t('userinfo.createTime')">
         <el-col :span="11">
-          <el-date-picker type="date" :placeholder="$t('userinfo.selectDate')" v-model="form.create_time" style="width: 100%;"></el-date-picker>
+          <el-date-picker type="date" :placeholder="$t('userinfo.selectDate')" v-model="form.create_time"
+                          style="width: 100%;"></el-date-picker>
         </el-col>
       </el-form-item>
 
@@ -37,12 +42,17 @@
 </template>
 
 <script>
-  import { getUserInfo,updateUserInfo,uploadAvatar } from '@/api/userInfo'
+  import {getUserInfo, updateUserInfo, uploadAvatar} from '@/api/userInfo'
   import {Message} from "element-ui";
+  import PanThumb from '@/components/PanThumb'
+
   export default {
     name: "UserInfo",
-    data(){
-      return{
+    components: {
+      PanThumb,
+    },
+    data() {
+      return {
         form: {
           avatar: '',
           name: '',
@@ -53,29 +63,29 @@
           description: '',
         },
         file: '',
-        success:this.$t('userinfo.success')
+        success: this.$t('userinfo.success')
       }
     },
     methods: {
       onSubmit() {
-        var data={
-          name:this.form.name,
-          roles:this.form.roles,
-          avatar:this.form.avatar,
-          description:this.form.description,
-          address:this.form.address,
-          email:this.form.email,
-          create_time:Date.parse(this.form.create_time)/1000
+        var data = {
+          name: this.form.name,
+          roles: this.form.roles,
+          avatar: this.form.avatar,
+          description: this.form.description,
+          address: this.form.address,
+          email: this.form.email,
+          create_time: Date.parse(this.form.create_time) / 1000
         }
-        updateUserInfo(data).then(response=>{
+        updateUserInfo(data).then(response => {
           Message({
             message: this.success,
             type: 'success',
             duration: 2000
           })
-          this.$store.commit('SET_AVATAR',this.form.avatar)
-          this.$store.commit('SET_NAME',this.form.name)
-          this.$store.commit('SET_ROLES',this.form.roles)
+          this.$store.commit('SET_AVATAR', this.form.avatar)
+          this.$store.commit('SET_NAME', this.form.name)
+          this.$store.commit('SET_ROLES', this.form.roles)
         })
       },
       uploadFile(event) {
@@ -85,35 +95,37 @@
         const isLt2M = this.file.size / 1024 / 1024 < 1;
         if (!isJPG) {
           this.$message.error('上传头像图片只能是 JPG 格式!');
-        }else if (!isLt2M) {
+        } else if (!isLt2M) {
           this.$message.error('上传头像图片大小不能超过 1MB!');
-        }else {
+        } else {
           formData.append('files', this.file);
-          uploadAvatar(formData).then(response=>{
-            this.form.avatar=this.GLOBALDATA.serverUrl+response.data
+          uploadAvatar(formData).then(response => {
+            this.form.avatar = this.GLOBALDATA.serverUrl + response.data
           })
         }
       },
-      uploadAvatar(){
+      uploadAvatar() {
         document.getElementById('avatarInput').click()
       }
     },
-    mounted(){
-      getUserInfo().then(response=>{
-        this.form=response.data
+    mounted() {
+      getUserInfo().then(response => {
+        this.form = response.data
       })
     }
   }
 </script>
 
 <style scoped rel="stylesheet/scss" lang="scss">
-  .main{
+  .main {
     max-width: 500px;
-    padding:20px;
-    padding-top:30px;
-    padding-bottom:0;
+    padding: 20px;
+    padding-top: 30px;
+    padding-bottom: 0;
     box-sizing: border-box;
-    .avatar{
+
+    .avatar {
+      margin-left: 10px;
       width: 50px;
       height: 50px;
       border-radius: 10px;

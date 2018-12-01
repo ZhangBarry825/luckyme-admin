@@ -64,7 +64,8 @@ export default {
     externalLink: 'External Link',
     userInfo: 'User Info',
     password: 'User Password',
-    draft: 'Draft List'
+    draft: 'Draft List',
+    type: 'Type Manage'
   },
   navbar: {
     logOut: 'Log Out',
@@ -208,7 +209,7 @@ export default {
     tip: 'Tip',
     continue: 'Continue',
     cancel: 'Cancel',
-    ifDelete: 'This action will  delete the file, whether to continue?',
+    ifDelete: 'This action will  delete the record, whether to continue?',
     atLeast: 'Select at least one record',
     deleteSucc: 'Delete successfully!',
     type1: 'type1',
@@ -252,5 +253,20 @@ export default {
   },
   draft: {
     title: 'Draft List'
+  },
+  type:{
+    createType:'Create article type',
+    cn_name:'Chinese Name',
+    en_name:'English Name',
+    date:'Date',
+    console:'Console',
+    createSuccess:'Create success',
+    edit:'Edit',
+    delete:'Delete',
+    cancel:'Cancel',
+    confirm:'Confirm',
+    warn:'Chinese Name or English Name can not be empty',
+    enWarn:'English Name can not be empty',
+    cnWarn:'Chinese Name can not be empty',
   }
 }

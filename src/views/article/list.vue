@@ -2,6 +2,7 @@
   <div class="content-mytype">
     <mConsole
       :article-type="articleType"
+      :isSearch="true"
       @handleCreate="handleCreate"
       @handleDelete="consoleDelete"
       @handleSearch="handleSearch"/>

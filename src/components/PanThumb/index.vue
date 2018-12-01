@@ -78,21 +78,33 @@ export default {
   width: inherit;
   height: inherit;
   border-radius: 50%;
-  overflow: hidden;
+  box-sizing: border-box;
+  /*overflow: hidden;*/
+  text-align: center;
   box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.05);
 }
-
-.pan-info h3 {
-  color: #fff;
-  text-transform: uppercase;
+.pan-info .words{
+  color: gray;
   position: relative;
-  letter-spacing: 2px;
-  font-size: 18px;
-  margin: 0 60px;
-  padding: 22px 0 0 0;
-  height: 85px;
+  margin: 0 auto;
+  line-height: 1;
   font-family: 'Open Sans', Arial, sans-serif;
   text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  font-size: 15px;
+  word-break: break-all;
+}
+.pan-info h3 {
+  color: #123;
+  /*text-transform: uppercase;*/
+  /*position: relative;*/
+  /*letter-spacing: 2px;*/
+  font-size: 18px;
+  /*margin: 0 60px;*/
+  /*padding: 22px 0 0 0;*/
+  /*height: 85px;*/
+  /*font-family: 'Open Sans', Arial, sans-serif;*/
+  /*text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0, 0, 0, 0.3);*/
 }
 
 .pan-info p {
@@ -111,7 +123,6 @@ export default {
   height: 80px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  color: #fff;
   font-style: normal;
   font-weight: 700;
   text-transform: uppercase;

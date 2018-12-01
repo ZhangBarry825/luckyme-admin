@@ -1,6 +1,6 @@
 <template>
   <div class="content-mytype">
-    <mConsole :article-type="articleType" @handleCreate="handleCreate" @handleDelete="consoleDelete" @handleSearch="handleSearch"/>
+    <mConsole :article-type="articleType" :isSearch="true" @handleCreate="handleCreate" @handleDelete="consoleDelete" @handleSearch="handleSearch"/>
     <mTable ref="mtable" :typeList="typeList" :table-data="tableData" :all-num="allNum" :is-loading="isLoading" @handleDelete="tableDelete" @handleSelect="handleSelect" @handleEdit="handleEdit" @pageChange="tableLoad" />
   </div>
 </template>
@@ -152,7 +152,22 @@ export default {
         })
       }
     }
-  }
+  },
+  computed: {
+    lang() {
+      return this.$store.getters.language
+    }
+  },
+  watch: {
+    lang(newVal, oldVal) {
+      if (newVal === 'zh') {
+        this.articleType='草稿箱'
+      }
+      if (newVal === 'en') {
+        this.articleType='Draft List'
+      }
+    }
+  },
 }
 </script>
 

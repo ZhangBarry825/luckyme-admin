@@ -64,7 +64,8 @@ export default {
     externalLink: '外链',
     userInfo: '用户信息',
     password: '用户密码',
-    draft: '草稿箱'
+    draft: '草稿箱',
+    type: '分类管理'
   },
   navbar: {
     logOut: '退出登录',
@@ -208,7 +209,7 @@ export default {
     tip: '提示',
     continue: '确定',
     cancel: '取消',
-    ifDelete: '此操作将永久删除该文件, 是否继续?',
+    ifDelete: '此操作将永久删除该记录, 是否继续?',
     atLeast: '至少选择一条记录',
     deleteSucc: '删除成功！',
     type1: 'type1',
@@ -252,5 +253,20 @@ export default {
   },
   draft: {
     title: '草稿箱'
+  },
+  type:{
+    createType:'创建文章分类',
+    cn_name:'中文名称',
+    en_name:'英文名称',
+    date:'日期',
+    console:'操作',
+    createSuccess:'创建成功',
+    edit:'编辑',
+    delete:'删除',
+    cancel:'取消',
+    confirm:'确定',
+    warn:'中文名称或英文名称不能为空',
+    enWarn:'英文名称不能为空',
+    cnWarn:'中文名称不能为空',
   }
 }
