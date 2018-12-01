@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import store from '@/store'
 Vue.use(Router)
 
 /* Layout */
@@ -12,8 +12,7 @@ import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
 
-import {mTypeList} from '@/api/article'
-
+import { mTypeList } from '@/api/article'
 
 /** note: Submenu only appear when children.length>=1
  *  detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -74,7 +73,7 @@ export const constantRouterMap = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: {title: 'dashboard', icon: 'dashboard', noCache: true}
+        meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
       }
     ]
   },
@@ -87,7 +86,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/documentation/index'),
         name: 'Documentation',
-        meta: {title: 'documentation', icon: 'documentation', noCache: true}
+        meta: { title: 'documentation', icon: 'documentation', noCache: true }
       }
     ]
   },
@@ -100,7 +99,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/guide/index'),
         name: 'Guide',
-        meta: {title: 'guide', icon: 'guide', noCache: true}
+        meta: { title: 'guide', icon: 'guide', noCache: true }
       }
     ]
   },
@@ -114,7 +113,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/userinfo/index'),
         name: 'UserInfo',
-        meta: {title: 'userInfo', icon: 'guide', noCache: true}
+        meta: { title: 'userInfo', icon: 'guide', noCache: true }
       }
     ]
   },
@@ -128,7 +127,7 @@ export const constantRouterMap = [
         path: 'index',
         component: () => import('@/views/password/index'),
         name: 'Password',
-        meta: {title: 'password', icon: 'guide', noCache: true}
+        meta: { title: 'password', icon: 'guide', noCache: true }
       }
     ]
   }
@@ -136,7 +135,7 @@ export const constantRouterMap = [
 
 export default new Router({
   // mode: 'history', // require service support
-  scrollBehavior: () => ({y: 0}),
+  scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })
 
@@ -181,7 +180,7 @@ export const asyncRouterMap = [
         path: 'index',
         component: () => import('@/views/svg-icons/index'),
         name: 'Icons',
-        meta: {title: 'icons', icon: 'icon', noCache: true}
+        meta: { title: 'icons', icon: 'icon', noCache: true }
       }
     ]
   },
@@ -232,7 +231,7 @@ export const asyncRouterMap = [
         path: 'index',
         component: () => import('@/views/tab/index'),
         name: 'Tab',
-        meta: {title: 'tab', icon: 'tab'}
+        meta: { title: 'tab', icon: 'tab' }
       }
     ]
   },
@@ -251,13 +250,13 @@ export const asyncRouterMap = [
         path: '401',
         component: () => import('@/views/errorPage/401'),
         name: 'Page401',
-        meta: {title: 'page401', noCache: true}
+        meta: { title: 'page401', noCache: true }
       },
       {
         path: '404',
         component: () => import('@/views/errorPage/404'),
         name: 'Page404',
-        meta: {title: 'page404', noCache: true}
+        meta: { title: 'page404', noCache: true }
       }
     ]
   },
@@ -271,7 +270,7 @@ export const asyncRouterMap = [
         path: 'log',
         component: () => import('@/views/errorLog/index'),
         name: 'ErrorLog',
-        meta: {title: 'errorLog', icon: 'bug'}
+        meta: { title: 'errorLog', icon: 'bug' }
       }
     ]
   },
@@ -290,19 +289,19 @@ export const asyncRouterMap = [
         path: 'export-excel',
         component: () => import('@/views/excel/exportExcel'),
         name: 'ExportExcel',
-        meta: {title: 'exportExcel'}
+        meta: { title: 'exportExcel' }
       },
       {
         path: 'export-selected-excel',
         component: () => import('@/views/excel/selectExcel'),
         name: 'SelectExcel',
-        meta: {title: 'selectExcel'}
+        meta: { title: 'selectExcel' }
       },
       {
         path: 'upload-excel',
         component: () => import('@/views/excel/uploadExcel'),
         name: 'UploadExcel',
-        meta: {title: 'uploadExcel'}
+        meta: { title: 'uploadExcel' }
       }
     ]
   },
@@ -312,13 +311,13 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/zip/download',
     alwaysShow: true,
-    meta: {title: 'zip', icon: 'zip'},
+    meta: { title: 'zip', icon: 'zip' },
     children: [
       {
         path: 'download',
         component: () => import('@/views/zip/index'),
         name: 'ExportZip',
-        meta: {title: 'exportZip'}
+        meta: { title: 'exportZip' }
       }
     ]
   },
@@ -332,7 +331,7 @@ export const asyncRouterMap = [
         path: 'index',
         component: () => import('@/views/theme/index'),
         name: 'Theme',
-        meta: {title: 'theme', icon: 'theme'}
+        meta: { title: 'theme', icon: 'theme' }
       }
     ]
   },
@@ -346,7 +345,7 @@ export const asyncRouterMap = [
         path: 'index',
         component: () => import('@/views/clipboard/index'),
         name: 'ClipboardDemo',
-        meta: {title: 'clipboardDemo', icon: 'clipboard'}
+        meta: { title: 'clipboardDemo', icon: 'clipboard' }
       }
     ]
   },
@@ -359,7 +358,7 @@ export const asyncRouterMap = [
         path: 'index',
         component: () => import('@/views/i18n-demo/index'),
         name: 'I18n',
-        meta: {title: 'i18n', icon: 'international'}
+        meta: { title: 'i18n', icon: 'international' }
       }
     ]
   },
@@ -370,7 +369,7 @@ export const asyncRouterMap = [
     children: [
       {
         path: 'https://github.com/PanJiaChen/vue-element-admin',
-        meta: {title: 'externalLink', icon: 'link'}
+        meta: { title: 'externalLink', icon: 'link' }
       }
     ]
   },
@@ -382,41 +381,40 @@ export const asyncRouterMap = [
         path: 'index',
         component: () => import('@/views/draft/list'),
         name: 'Draft',
-        meta: {title: 'draft', icon: 'list'}
+        meta: { title: 'draft', icon: 'list' }
       }
     ]
   },
   {
     path: '/article',
     component: Layout,
-    meta: {icon: 'list'},
+    meta: { icon: 'list' },
     children: [
       {
         path: 'list',
         component: () => import('@/views/article/list'),
         name: 'ArticleList',
-        meta: {title: 'articleList', icon: 'list', hidden: false}
+        meta: { title: 'articleList', icon: 'list', hidden: false }
       },
       {
         path: 'edit',
         component: () => import('@/views/article/edit'),
         name: 'editArticle',
-        meta: {title: 'editArticle', icon: 'edit', hidden: false}
+        meta: { title: 'editArticle', icon: 'edit', hidden: false }
       },
       {
         path: 'create',
         component: () => import('@/views/article/create'),
         name: 'CreateArticle',
-        meta: {title: 'createArticle', icon: 'edit', hidden: false}
+        meta: { title: 'createArticle', icon: 'edit', hidden: false }
       }
     ]
   },
 
-  {path: '*', redirect: '/404', hidden: true}
+  { path: '*', redirect: '/404', hidden: true }
 ]
 
-
-console.log('router')
+// 动态增加路由
 const data = {
   all: true,
   page_num: 1,
@@ -424,22 +422,21 @@ const data = {
 }
 mTypeList(data).then((response) => {
   console.log(response.data, 999)
-  if (response.code == 200) {
-    for(let i=0;i<response.data.types.length;i++){
-      console.log(i)
-      console.log(response.data.types[i].en_name)
-      let itemType = {
-        path: '/article'+i,
+  if (response.code === 200) {
+    for (let i = 0; i < response.data.types.length; i++) {
+      const language = store.getters.language
+      const title = language === 'zh' ? response.data.types[i].cn_name : response.data.types[i].en_name
+      const itemType = {
+        path: '/article' + i,
         component: Layout,
-        meta: {icon: 'list'},
-        children: [
-          {
-            path: 'list',
-            component: () => import('@/views/article/list'),
-            name: 'ArticleList',
-            meta: {title: 'articleList', icon: 'list', hidden: false},
-            props: { typeRouter: response.data.types[i].name, enRouter:response.data.types[i].en_name, cnRouter:response.data.types[i].cn_name }
-          },]
+        meta: { icon: 'list' },
+        children: [{
+          path: 'list',
+          component: () => import('@/views/article/list'),
+          name: 'ArticleList',
+          meta: { title: title, icon: 'list', hidden: false },
+          props: { typeRouter: response.data.types[i].name, enRouter: response.data.types[i].en_name, cnRouter: response.data.types[i].cn_name }
+        }]
       }
       asyncRouterMap.push(itemType)
     }
