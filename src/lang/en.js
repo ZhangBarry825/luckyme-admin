@@ -261,6 +261,7 @@ export default {
     date:'Date',
     console:'Console',
     createSuccess:'Create success',
+    deleteSuccess:'Delete success',
     edit:'Edit',
     delete:'Delete',
     cancel:'Cancel',

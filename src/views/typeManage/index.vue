@@ -3,7 +3,7 @@
     <mConsole
       :article-type="articleType"
       :isSearch="false"
-      :isDelete="false"
+      :isDelete="true"
       @handleCreate="handleCreate"
       @handleDelete="consoleDelete"
       @handleSearch="handleSearch"/>
@@ -15,6 +15,9 @@
       style="width: 100%;border:1px solid gainsboro"
       @selection-change="handleSelect"
     >
+      <el-table-column
+        type="selection"
+        width="40"/>
       <el-table-column
         type="index"
         label="#"
@@ -57,13 +60,13 @@
       </el-table-column>
     </el-table>
 
-    <el-dialog :title="$t('type.createType')" :visible.sync="dialogFormVisible">
+    <el-dialog :title="$t('type.createType')" :visible.sync="dialogFormVisible" style="overflow: hidden">
       <el-form  ref="dataForm" label-position="left" label-width="70px"
-               style="width: 400px; margin-left:50px;">
-        <el-form-item label-width="120px" :label="$t('type.cn_name')" prop="cn_name" >
+               style="margin-left:50px;">
+        <el-form-item  :label="$t('type.cn_name')" prop="cn_name" >
           <el-input v-model="postForm.cn_name"/>
         </el-form-item>
-        <el-form-item label-width="120px" :label="$t('type.en_name')" prop="en_name" >
+        <el-form-item  :label="$t('type.en_name')" prop="en_name" >
           <el-input v-model="postForm.en_name"/>
         </el-form-item>
         <div class="dialog-footer">
@@ -97,7 +100,8 @@
           cn_name: 'Wang',
         },
         ],
-        isLoading: false
+        isLoading: false,
+        selectedItems:[]
       }
     },
     components: {
@@ -130,10 +134,37 @@
             })
             this.dialogFormVisible=false
             this.fetchData()
+            setTimeout(()=>{
+              location.reload()
+            },1000)
           })
         }
       },
-      consoleDelete(){},
+      consoleDelete(row){
+        this.$confirm(this.$t('articleList.ifDelete'), this.$t('articleList.tip'), {
+          confirmButtonText: this.$t('articleList.continue'),
+          cancelButtonText: this.$t('articleList.cancel'),
+          type: 'warning'
+        }).then(() => {
+          let data={
+            id:this.selectedItems
+          }
+          mDeleteType(data).then((response) => {
+            console.log(response)
+            this.$message({
+              type: 'success',
+              message: this.$t('type.deleteSucc')
+            })
+            this.fetchData()
+            this.selectedItems=[]
+            setTimeout(()=>{
+              location.reload()
+            },1000)
+          }).catch((err)=>{
+          })
+        }).catch(() => {
+        })
+      },
       handleSearch(){},
 
       fetchData(){
@@ -170,12 +201,22 @@
               message: this.$t('articleList.deleteSucc')
             })
             this.fetchData()
+            setTimeout(()=>{
+              location.reload()
+            },1000)
           }).catch((err)=>{
           })
         }).catch(() => {
         })
       },
-      handleSelect(){}
+      handleSelect(row){
+        console.log(row)
+        this.selectedItems=[]
+        for(let i=0;i<row.length;i++){
+          this.selectedItems.push(row[i]['id'])
+        }
+        console.log(this.selectedItems)
+      }
     },
     computed: {
       lang() {

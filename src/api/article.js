@@ -79,7 +79,7 @@ export function mDeleteDraft(data) {
 }
 export function mTypeList(query) {
   return request({
-    url: '/api/admin/articletype/listtype',
+    url: '/api/home/articletype/listtype',
     method: 'get',
     params: query
   })

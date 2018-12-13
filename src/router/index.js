@@ -14,6 +14,36 @@ import nestedRouter from './modules/nested'
 
 import { mTypeList } from '@/api/article'
 
+
+// 动态增加路由
+let data = {
+  all: true,
+  page_num: 1,
+  page_size: 10
+}
+let addRoute=[];
+mTypeList(data).then((response) => {
+  if (response.code === 200) {
+    for (let i = 0; i < response.data.types.length; i++) {
+      let language = store.getters.language
+      let title = language === 'zh' ? response.data.types[i].cn_name : response.data.types[i].en_name
+      let itemType = {
+        path: '/article' + i,
+        component: Layout,
+        meta: { icon: 'list' },
+        children: [{
+          path: 'list',
+          component: () => import('@/views/article/list'),
+          name: 'ArticleList',
+          meta: { title: title, icon: 'star', hidden: false },
+          props: { typeRouter: response.data.types[i].name, enRouter: response.data.types[i].en_name, cnRouter: response.data.types[i].cn_name }
+        }]
+      }
+      asyncRouterMap.push(itemType)
+    }
+  }
+})
+
 /** note: Submenu only appear when children.length>=1
  *  detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
  **/
@@ -139,7 +169,7 @@ export default new Router({
   routes: constantRouterMap
 })
 
-export const asyncRouterMap = [
+export let asyncRouterMap = [
   // {
   //   path: '/permission',
   //   component: Layout,
@@ -427,31 +457,3 @@ export const asyncRouterMap = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-// 动态增加路由
-const data = {
-  all: true,
-  page_num: 1,
-  page_size: 10
-}
-mTypeList(data).then((response) => {
-  console.log(response.data, 999)
-  if (response.code === 200) {
-    for (let i = 0; i < response.data.types.length; i++) {
-      const language = store.getters.language
-      const title = language === 'zh' ? response.data.types[i].cn_name : response.data.types[i].en_name
-      const itemType = {
-        path: '/article' + i,
-        component: Layout,
-        meta: { icon: 'list' },
-        children: [{
-          path: 'list',
-          component: () => import('@/views/article/list'),
-          name: 'ArticleList',
-          meta: { title: title, icon: 'star', hidden: false },
-          props: { typeRouter: response.data.types[i].name, enRouter: response.data.types[i].en_name, cnRouter: response.data.types[i].cn_name }
-        }]
-      }
-      asyncRouterMap.push(itemType)
-    }
-  }
-})

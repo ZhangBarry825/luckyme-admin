@@ -261,6 +261,7 @@ export default {
     date:'日期',
     console:'操作',
     createSuccess:'创建成功',
+    'deleteSucc':'删除成功',
     edit:'编辑',
     delete:'删除',
     cancel:'取消',

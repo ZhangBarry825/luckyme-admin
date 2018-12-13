@@ -55,6 +55,20 @@ service.interceptors.response.use(
           })
         })
       }
+      if (res.code == 502 ) {
+        Message({
+          message: '请先删除分类下的文章',
+          type: 'error',
+          duration: 5 * 1000
+        })
+      }
+      if (res.code == 503 ) {
+        Message({
+          message: 'id不存在',
+          type: 'error',
+          duration: 5 * 1000
+        })
+      }
       return Promise.reject('error')
     } else {
       return response.data
