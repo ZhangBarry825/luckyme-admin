@@ -282,41 +282,52 @@ export default {
       if (!this.validateItem()) {
         return
       }
-      console.log(this.postForm)
+      console.log(this.postForm,555)
 
-      const artToSubmit = {
+      if(this.postForm.art_status==='published'){
+        this.$message({
+          message: this.$t('articleDetail.published'),
+          type: 'warning'
+        })
+        return
+      }
+      let artToSubmit = {
         title: this.postForm.title,
         type: this.postForm.type,
         status: this.postForm.status,
         update_time: display_time,
         description: this.postForm.description,
         content: this.postForm.content,
-        cover: this.postForm.cover
+        cover: this.postForm.cover,
       }
-      if (this.isEdit) {
-        artToSubmit.id = this.postForm.id
-        this.loading = true
-        mUpdateArticle(artToSubmit).then((response) => {
-          console.log(response)
-          if (response.code == 200) {
-            this.$notify({
-              title: this.$t('articleDetail.success'),
-              message: this.$t('articleDetail.publishSuccess'),
-              type: 'success',
-              duration: 2000
-            })
-            this.postForm.art_status = 'published'
+      if (this.isEdit && this.postForm.is_draft == 0) {
+        console.log(this.postForm,888)
+          artToSubmit.id = this.postForm.id
+          this.loading = true
+          mUpdateArticle(artToSubmit).then((response) => {
+            console.log(response)
+            if (response.code === 200) {
+              this.$notify({
+                title: this.$t('articleDetail.success'),
+                message: this.$t('articleDetail.publishSuccess'),
+                type: 'success',
+                duration: 2000
+              })
+              this.postForm.art_status = 'published'
+              this.loading = false
+            }
+          }).catch((err) => {
             this.loading = false
-          }
-        }).catch((err) => {
-          this.loading = false
-        })
+          })
       } else {
+        if(this.postForm.is_draft == 1){
+          artToSubmit.id=this.postForm.id
+        }
         this.loading = true
         artToSubmit.create_time = display_time
         mCreateArticle(artToSubmit).then((response) => {
           console.log(response)
-          if (response.code == 200) {
+          if (response.code === 200) {
             this.$notify({
               title: this.$t('articleDetail.success'),
               message: this.$t('articleDetail.publishSuccess'),
@@ -340,6 +351,7 @@ export default {
         return
       }
       console.log(this.postForm)
+      console.log(this.isEdit)
       const artToSubmit = {
         title: this.postForm.title,
         type: this.postForm.type,
@@ -350,10 +362,8 @@ export default {
         content: this.postForm.content,
         cover: this.postForm.cover
       }
-      if (this.isEdit) {
-        if (this.postForm.is_draft == 1) {
-          artToSubmit.id == this.postForm.id
-        }
+      if (this.isEdit && this.postForm.is_draft == 1) {
+          artToSubmit.id = this.postForm.id
       }
       this.loading = true
       mCreateDraft(artToSubmit).then((response) => {

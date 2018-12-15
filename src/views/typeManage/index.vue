@@ -176,8 +176,13 @@
         }
         mFetchTypeList(data).then((response) => {
           console.log(response)
+          for(let i =0;i<response.data.types.length;i++){
+            response.data.types[i]['date']= response.data.types[i].update_time
+          }
           this.tableData=response.data.types
+
           this.isLoading=false
+          console.log(this.tableData,123123)
         }).catch((err)=>{
           this.isLoading=false
         })

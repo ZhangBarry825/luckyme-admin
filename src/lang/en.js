@@ -249,7 +249,8 @@ export default {
     uploadImg: 'Drag the cover image here, or',
     orImg: 'Click to upload',
     uploadImage: 'Upload Image',
-    waitUpload: 'Please wait for all pictures uploaded successfully or network problems,please refresh the page to upload again!'
+    waitUpload: 'Please wait for all pictures uploaded successfully or network problems,please refresh the page to upload again!',
+    published:'Article is published'
   },
   draft: {
     title: 'Draft List'
