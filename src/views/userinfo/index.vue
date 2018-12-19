@@ -100,7 +100,8 @@
         } else {
           formData.append('files', this.file);
           uploadAvatar(formData).then(response => {
-            this.form.avatar = this.GLOBALDATA.serverUrl + response.data
+            // this.form.avatar = this.GLOBALDATA.serverUrl + response.data
+            this.form.avatar = '/api/' + response.data
           })
         }
       },
