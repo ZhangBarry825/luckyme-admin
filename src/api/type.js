@@ -9,14 +9,14 @@ export function mCreateType(data) {
 }
 export function mFetchTypeList(query) {
   return request({
-    url: '/api/admin/articletype/listtype',
+    url: '/api/admin/article/listtype',
     method: 'get',
     params: query
   })
 }
 export function mDeleteType(data) {
   return request({
-    url: '/api/admin/articletype/deletetype',
+    url: '/api/admin/article/deletetype',
     method: 'post',
     data
   })
