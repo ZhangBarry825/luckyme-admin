@@ -13,6 +13,7 @@ module.exports = {
       '/api': {
         changeOrigin: true,
         target: 'http://luckyme.barry.umdev.cn',
+        // target: 'http://api.luckyme.com.cn',
         pathRewrite: {'^/api' : ''}
       }
     },

@@ -23,6 +23,11 @@ const seen = new Set()
 const nameLength = 4
 
 const webpackConfig = merge(baseWebpackConfig, {
+  performance: {
+    hints: false,
+    maxEntrypointSize: 1024000,
+    maxAssetSize: 1024000
+  },
   mode: 'production',
   module: {
     rules: utils.styleLoaders({

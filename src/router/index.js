@@ -16,7 +16,7 @@ import { mTypeList } from '@/api/article'
 
 
 // 动态增加路由
-let data = {
+/*let data = {
   all: true,
   page_num: 1,
   page_size: 10
@@ -42,7 +42,7 @@ mTypeList(data).then((response) => {
       asyncRouterMap.push(itemType)
     }
   }
-})
+})*/
 
 /** note: Submenu only appear when children.length>=1
  *  detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -219,7 +219,7 @@ export let asyncRouterMap = [
   componentsRouter,
   // chartsRouter,
   // nestedRouter,
-  tableRouter,
+  // tableRouter,
 
   // {
   //   path: '/example',
@@ -454,6 +454,57 @@ export let asyncRouterMap = [
     ]
   },
 
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: '/404', hidden: true },
+
+
+//固定栏目
+  {
+    path: '/article0',
+    component: Layout,
+    meta: { icon: 'list' },
+    children: [{
+      path: 'list',
+      component: () => import('@/views/article/list'),
+      name: 'ArticleList',
+      meta: { title: store.getters.language === 'zh' ? '心路历程' : 'XLLC', icon: 'star', hidden: false },
+      props: { typeRouter: 1543666733, enRouter: 'XLLC', cnRouter: '心路历程' }
+    }]
+  },
+  {
+    path: '/article1',
+    component: Layout,
+    meta: { icon: 'list' },
+    children: [{
+      path: 'list',
+      component: () => import('@/views/article/list'),
+      name: 'ArticleList',
+      meta: { title: store.getters.language === 'zh' ? '情感世界' : 'QGSJ', icon: 'star', hidden: false },
+      props: { typeRouter: 1543666734, enRouter: 'QGSJ', cnRouter: '情感世界' }
+    }]
+  },
+  {
+    path: '/article2',
+    component: Layout,
+    meta: { icon: 'list' },
+    children: [{
+      path: 'list',
+      component: () => import('@/views/article/list'),
+      name: 'ArticleList',
+      meta: { title: store.getters.language === 'zh' ? '技术交流' : 'JSJL', icon: 'star', hidden: false },
+      props: { typeRouter: 1543666735, enRouter: 'JSJL', cnRouter: '技术交流' }
+    }]
+  },
+  {
+    path: '/article3',
+    component: Layout,
+    meta: { icon: 'list' },
+    children: [{
+      path: 'list',
+      component: () => import('@/views/article/list'),
+      name: 'ArticleList',
+      meta: { title: store.getters.language === 'zh' ? '韶华追忆' : 'SHZY', icon: 'star', hidden: false },
+      props: { typeRouter: 1543666736, enRouter: 'SHZY', cnRouter: '韶华追忆' }
+    }]
+  },
 ]
 

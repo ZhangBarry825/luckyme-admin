@@ -39,7 +39,7 @@ export default {
       listObj: {},
       fileList: [],
       baseUrl: this.GLOBALDATA.serverUrl + 'admin/upload/upload',
-      serverUrl: this.GLOBALDATA.serverUrl
+      serverUrl: this.GLOBALDATA.articlePicUrl
     }
   },
   methods: {

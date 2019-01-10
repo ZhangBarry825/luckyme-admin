@@ -8,7 +8,7 @@
       class="image-uploader"
       drag
       name="files"
-      :action="baseUrl+'admin/upload/upload'">
+      :action="GLOBALDATA.apiUrl+'admin/upload/upload'">
       <i class="el-icon-upload"/>
       <div class="el-upload__text">{{$t('articleDetail.uploadImg')}}<em> {{$t('articleDetail.orImg')}}</em></div>
     </el-upload>
@@ -48,7 +48,7 @@
       return {
         tempUrl: '',
         dataObj: {token: '', key: ''},
-        baseUrl:this.GLOBALDATA.serverUrl,
+        baseUrl:this.GLOBALDATA.CoverUrl,
       }
     },
     computed: {

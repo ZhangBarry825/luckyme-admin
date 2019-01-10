@@ -189,6 +189,7 @@ export default {
     },
     uploadCover(data) {
       console.log(data, 'cover')
+      console.log(this.postForm.cover,999)
     },
     fetchData(id, type) {
       if (type == 'article') {

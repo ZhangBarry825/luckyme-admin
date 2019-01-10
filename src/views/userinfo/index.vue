@@ -4,7 +4,7 @@
       <el-form-item :label="$t('userinfo.avatar')">
         <el-input v-model="form.avatar" style="display: none"></el-input>
         <a  @click="uploadAvatar">
-          <pan-thumb class="avatar" width="100px" height="100px" :image="form.avatar">
+          <pan-thumb class="avatar" width="100px" height="100px" :image="GLOBALDATA.avatarUrl+form.avatar">
             <div class="words">click<br>to<br>change</div>
           </pan-thumb>
         </a>
@@ -91,17 +91,19 @@
       uploadFile(event) {
         this.file = event.target.files[0];
         let formData = new FormData();
-        const isJPG = this.file.type === 'image/jpeg';
+        console.log(this.file.type)
+        const isJPG = this.file.type === 'image/jpeg' || this.file.type === 'image/gif'  || this.file.type === 'image/png' ;
         const isLt2M = this.file.size / 1024 / 1024 < 1;
         if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
+          this.$message.error('上传头像图片只能是 jpg/gif/png 格式!');
         } else if (!isLt2M) {
           this.$message.error('上传头像图片大小不能超过 1MB!');
         } else {
           formData.append('files', this.file);
           uploadAvatar(formData).then(response => {
+            // console.log(response,888)
             // this.form.avatar = this.GLOBALDATA.serverUrl + response.data
-            this.form.avatar = '/api/' + response.data
+            this.form.avatar =response.data
           })
         }
       },
