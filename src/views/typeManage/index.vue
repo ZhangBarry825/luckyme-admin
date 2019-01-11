@@ -4,6 +4,8 @@
       :article-type="articleType"
       :isSearch="false"
       :isDelete="true"
+      :disableDelete="true"
+      :disableNew="true"
       @handleCreate="handleCreate"
       @handleDelete="consoleDelete"
       @handleSearch="handleSearch"/>
@@ -50,11 +52,13 @@
             <el-button
               size="mini"
               icon="el-icon-edit"
+              :disabled="true"
               @click="handleEdit(scope.$index, scope.row)"/>
           <el-button
             size="mini"
             icon="el-icon-delete"
             type="danger"
+            :disabled="true"
             @click="handleDelete(scope.$index, scope.row)"/>
         </template>
       </el-table-column>

@@ -316,6 +316,9 @@ export default {
               })
               this.postForm.art_status = 'published'
               this.loading = false
+              setTimeout(()=>{
+                this.$router.push({ path: '/', query: {}})
+              },2000)
             }
           }).catch((err) => {
             this.loading = false
@@ -337,6 +340,9 @@ export default {
             })
             this.postForm.art_status = 'published'
             this.loading = false
+            setTimeout(()=>{
+              this.$router.push({ path: '/', query: {}})
+            },2000)
           }
         }).catch((err) => {
           this.loading = false
@@ -378,6 +384,9 @@ export default {
           })
           this.postForm.art_status = 'draft'
           this.loading = false
+          setTimeout(()=>{
+            this.$router.push({ path: '/', query: {}})
+          },2000)
         }
       }).catch((err) => {
         console.log(err, 123123)
